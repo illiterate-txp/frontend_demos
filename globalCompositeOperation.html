@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>globalCompositeOperation</title>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+
+<script>
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+
+    // 目标图像
+    ctx.fillStyle = 'green';
+    ctx.fillRect(100, 100, 200, 200);
+
+
+    ctx.globalCompositeOperation = 'lighter';
+
+    /*
+    *  默认值为source-over  =>  原图像叠加在目标图上
+    *  source-atop  =>  源图像只显示与目标图像重合的部分，其余部分不可见，目标图像正常显示
+    *  source-in  =>  【仅】显示源图像与目标图像重合的部分，显示源图像的内容，其余部分不可见（目标图像透明不可见）
+    *  source-out  =>  【仅】显示源图像与目标图像不重合的部分  =>  [源图像被裁减]
+    *  destination-over  =>  与source-over相反，后边绘制的在下边，在源图像上显示目标图像
+    *  destination-atop  =>  与source-atop相反，
+    *
+    *  lighter  =>   相交部分颜色叠加显示
+    *  copy   =>   显示源图像，忽略目标图像
+    *  xor  =>   相交的部分为透明，其余部分正常显示
+    * */
+
+    // 源图像（打算放上去的）
+    ctx.fillStyle = 'red';
+    ctx.fillRect(200, 200, 200, 200);
+
+    // ctx.fillStyle = 'green';
+    // ctx.fillRect(300, 300, 200, 200);
+
+</script>
+</body>
+</html>
